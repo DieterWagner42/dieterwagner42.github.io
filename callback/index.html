@@ -1,1 +1,18 @@
-
+<!doctype html>
+<html lang="de"><head><meta charset="utf-8"><title>Tesla Anmelde-Code</title></head>
+<body style="font-family:sans-serif;padding:2em;max-width:40em">
+<h1>Tesla Anmelde-Code</h1>
+<p id="info">Kein Code in der Adresse gefunden.</p>
+<pre id="code" style="font-size:1.1em;background:#eee;padding:1em;word-break:break-all"></pre>
+<script>
+var p = new URLSearchParams(location.search);
+if (p.get("code")) {
+document.getElementById("info").textContent =
+"Code erhalten. Jetzt sofort eintauschen mit: python3 powerwall_laden.py token CODE";
+document.getElementById("code").textContent = p.get("code");
+} else if (p.get("error")) {
+document.getElementById("info").textContent =
+"Fehler: " + p.get("error") + " " + (p.get("error_description") || "");
+}
+</script>
+</body></html>
